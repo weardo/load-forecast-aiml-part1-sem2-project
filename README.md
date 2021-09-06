@@ -41,13 +41,13 @@ By looking at the above plot, following can be observed
 - overall increasing trend year by year, possible reasons are - human activities/increase of temperature.
 
 ### How the temperature changes throught the year
-![Plot for How the temperature changes throught the year](images\how-temperature-varies-throught-the-year.png "Plot for How the temperature changes throught the year")
+![Plot for How the temperature changes throught the year](images/how-temperature-varies-throught-the-year.png "Plot for How the temperature changes throught the year")
 - Pattern of seasonality is visible.
 - Winter peak load during valley temperature period in winter and summer peak load during summer peak temperature period in summer
 - Summer peak higher than winter peak
 - Less need of AC in Fall and Spring
 ### How Load varies with the temperature
-![Plot for How Load varies with the temperature](images\how-consumption-varies-with-temperature.png "Plot for How Load varies with the temperature")
+![Plot for How Load varies with the temperature](images/how-consumption-varies-with-temperature.png "Plot for How Load varies with the temperature")
 #### With the above plot following points can be observed
 - Upper boundary of load-temperature plot shows nonsymmetrical V-shape while  lower boundary shows nonsymmetrical U-shape
 - Piecewise nonlinear function is preferred with dataset cut-off at 65F introducing following dummy and quantitative variables
@@ -58,7 +58,7 @@ By looking at the above plot, following can be observed
 
 
 ### Seasonality by months throught the year
-![Plot for Seasonality by months throught the year](images\load-temperature-month-plots.png "Plot for Seasonality by months throught the year")
+![Plot for Seasonality by months throught the year](images/load-temperature-month-plots.png "Plot for Seasonality by months throught the year")
 
 #### With above plot Following points can be observed
 - Higher levels of load in March than that in April despite similar temperature temperature - explained by different human activities
@@ -70,7 +70,7 @@ By looking at the above plot, following can be observed
 
 
 ### Seasonality by Hour throught the year
-![Plot for Seasonality by Hour throught the year](images\load-temperature-hour-plots.png "Plot for Seasonality by Hour throught the year")
+![Plot for Seasonality by Hour throught the year](images/load-temperature-hour-plots.png "Plot for Seasonality by Hour throught the year")
 
 #### Following points can be observed
 - Due to sunrise and sunset, time and temperature are correlated
