@@ -50,9 +50,9 @@ By looking at the above plot, following can be observed
 ![Plot for How Load varies with the temperature](images/how-consumption-varies-with-temperature.png "Plot for How Load varies with the temperature")
 #### With the above plot following points can be observed
 - Upper boundary of load-temperature plot shows nonsymmetrical V-shape while  lower boundary shows nonsymmetrical U-shape
-- Piecewise nonlinear function is preferred with dataset cut-off at 65F introducing following dummy and quantitative variables
-- TMPID = 1 for all temperature < 65
-- TMPID = 2 for all temperature >= 65
+- Piecewise nonlinear function is preferred with dataset cut-off at 284K introducing following dummy and quantitative variables
+- TMPID = 1 for all temperature < 285
+- TMPID = 2 for all temperature >= 285
 - TMP = temperature
 - TMP2 = square of temperature
 
@@ -84,17 +84,40 @@ By looking at the above plot, following can be observed
 - Different human activities on Weekdays and Weekends hence dummy variable D1 - weekdays, saturdays, sundays, D2 - mondays, other weekdays, saturdays, sundays
 
 
+### Training
+For training, we've used XGBoost library with following configuration
+- n_estimators = 1000
+- early_stopping_rounds=50
+
+## Importance of feature-variables
+![Importance of feature-variables](images/variable-importance-plot.png "Importance of feature-variables")
+
+## Predictions for year 2017
+![Predictions for year 2017](images/prediction-2017-plot.png "Predictions for year 2017")
+
+## Performance of the Model
+| Metric      | Value       |
+| ----------- | ----------- |
+| Mean Squared Error      | 5722792.126897162       |
+| Mean Absolute Error   | 1802.4898734634994        |
+| Mean Absolute Percentage Error | 5.856947648551624 |
+
+The trained model has achieved accuracy of about 95%.
+
+## Load Forecasting Using weather.gov api for hourly temperature forecast
+![Load Forecasting Using weather.gov api for hourly temperature forecast](images/one-week-plot.png "Load Forecasting Using weather.gov api for hourly temperature forecast")
 
 
+## Integrating the resulting model with the weather.gov api for hourly tmperature forecast
+![Integrating the resulting model with the weather.gov api for hourly tmperature forecast](images/weather-api-forecast.png "Integrating the resulting model with the weather.gov api for hourly tmperature forecast")
 
-### Existing Variables
-- In this context, independent variable - electric load in MegaWatts, dependent variables temperature, time of the year
-- To account for the time of the day, time of the month, affect of human activities on the elecric load following dummy variables are created - hour of the day, month of the year
+## Tools and Technologies
+- Languages used - HTML, Javascript, Python, Markdown
+- Frameworks Used - Flask, ChartJS
+- Weather.gov API - [Hourly Weather Forecast](https://www.weather.gov/documentation/services-web-api#/default/get_gridpoints__wfo___x___y__forecast_hourly)
 
-### Interaction Variables
-- tmpid - 
-- Diagnostic statistics - MAE, STDAE, MAPE, STDAPE
-- Electric load and hourly temperature history - 
-- Training sample - years 2005-2007
-- Testing sample - year 2008
-
+## Speciication
+- This project plots attempts to predict the Electric load on PJMI grid in pennsylvania for next 7 days.
+- It fetches hourly forecasted weather info for 7 days using following api
+- It calls for the weather api on the page refresh and attempts to predict the load for next week
+- Plots the resulting prediction using ChartJS Library
