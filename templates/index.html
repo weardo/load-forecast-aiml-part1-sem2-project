@@ -1,0 +1,74 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
+    <title>Hourly Electric Load Forecast for PJMI - Pittsburgh, USA</title>
+</head>
+<body>
+    <h2>Hourly Electric Load Forecast for PJMI - Pittsburgh, USA</h2>
+
+    <canvas id="chart" width="50" height="20"></canvas>
+</body>
+</html>
+
+<script>
+const xlabels = [];
+const ypreds = [];
+chartIt()
+
+async function chartIt() {
+    await getData('http://localhost:5000/predict_api')
+    var ctx = document.getElementById('chart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: xlabels,
+            datasets: [{
+                label: 'Hourly Electric Load Forecast for PJMI - Pittsburgh, USA - For 7 Days',
+                data: ypreds,
+                fill: true,
+                backgroundColor: ['rgba(255, 99, 132, 0.2)',],
+                borderColor: ['rgba(255, 99, 132, 1)',],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    ticks: {
+                        // Include a dollar sign in the ticks
+                        callback: function(value, index, values) {
+                            return value + ' MW';
+                        }
+                    }
+                }
+            }
+        }
+    });
+}
+
+async function getData (url) {
+  const res = await fetch(url);
+  const data = await res.json();
+  const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+
+  data.preds.forEach(p => {
+      xlabels.push(''.concat(days[new Date(p[0]).getDay()], ' ', new Date(p[0]).getHours()))
+      ypreds.push(p[1])
+  });
+  console.log(xlabels)
+}
+
+
+
+// // data = fetchAsync('http://localhost:5000/predict_api')
+// console.log(data)
+
+
+
+
+
+</script>
