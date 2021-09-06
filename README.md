@@ -1,6 +1,15 @@
 # Hourly Electric Load Forecast for PJMI - Pittsburgh, USA - For 7 Days
 
-Datasets used - 
+## Abstract
+- Short term electric load modeling and forecasting.
+- Demand Side Management (DSM) with beyond when and how much demand will be and - why is electricity being consumed?
+- Factors driving the fluctuations of the electric load at a particular time period.
+- Model hourly demand and investigate causality of the consumption of electric energy
+- Terms - Load forecasting, load management, load modeling, multiple linear regression
+- Both the datasets combined on common datetime attribute
+-Resulting dataset has 45250 rows, containing hourly data for years 2012-2017 of which data for the years 2012-2016 is used for training and data for the year 2017 is used for forecasting
+
+### Datasets used - 
 - [Hourly Electric Load Data](https://www.kaggle.com/robikscube/hourly-energy-consumption)
 - [Hourly Temperature Data](https://www.kaggle.com/selfishgene/historical-hourly-weather-data)
 
@@ -17,15 +26,6 @@ This data is available for 30 US and Canadian Cities, as well as 6 Israeli citie
 I've organized the data according to a common time axis for easy use.
 Each attribute has it's own file and is organized such that the rows are the time axis (it's the same time axis for all files), and the columns are the different cities (it's the same city ordering for all files as well).
 Additionally, for each city we also have the country, latitude and longitude information in a separate file.
-
-## Abstract
-- Short term electric load modeling and forecasting.
-- Demand Side Management (DSM) with beyond when and how much demand will be and - why is electricity being consumed?
-- Factors driving the fluctuations of the electric load at a particular time period.
-- Model hourly demand and investigate causality of the consumption of electric energy
-- Terms - Load forecasting, load management, load modeling, multiple linear regression
-- Both the datasets combined on common datetime attribute
--Resulting dataset has 45250 rows, containing hourly data for years 2012-2017 of which data for the years 2012-2016 is used for training and data for the year 2017 is used for forecasting
 
 ## Multiple Linear Regression in the Context
 - Used to model relationship between several independent and a dependent variable as a linear function
@@ -116,8 +116,22 @@ The trained model has achieved accuracy of about 95%.
 - Frameworks Used - Flask, ChartJS
 - Weather.gov API - [Hourly Weather Forecast](https://www.weather.gov/documentation/services-web-api#/default/get_gridpoints__wfo___x___y__forecast_hourly)
 
-## Speciication
+## Specification
 - This project plots attempts to predict the Electric load on PJMI grid in pennsylvania for next 7 days.
 - It fetches hourly forecasted weather info for 7 days using following api
 - It calls for the weather api on the page refresh and attempts to predict the load for next week
 - Plots the resulting prediction using ChartJS Library
+
+## Future Scope and Improvements
+- Proposed regression used to generate short-term hourly demand forecast for next week
+- Good interpretability of the behavior electricity consumption which helps understand system load profile when performing DSM and T&D
+- Load forecast with satisfying accuracy provides good reference for energy purchasing purpose
+- Considering cross effects among explanatory variables, performance improved with MAPE of 5.857%
+- Model can be improved by considering holidays and enhancing quality of data
+
+
+## References
+- T. Hong, M. Gui, M. E. Baran and H. L. Willis, "Modeling and forecasting hourly electric load by multiple linear regression with interactions," IEEE PES General Meeting, 2010, pp. 1-8, doi: 10.1109/PES.2010.5589959.
+- [Stack Overflow](https://stackoverflow.com/)
+- [Hourly Electric Load Data](https://www.kaggle.com/robikscube/hourly-energy-consumption)
+- [Hourly Temperature Data](https://www.kaggle.com/selfishgene/historical-hourly-weather-data)
